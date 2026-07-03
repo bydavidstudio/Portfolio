@@ -716,22 +716,7 @@ body.menu-open .menu-footer { opacity: 1; transform: translateY(0); }
   margin-bottom: 48px;
 }
 
-/* Trust Bar in Hero */
-.hero-trust-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 36px;
-  padding-top: 34px;
-  border-top: 1px solid var(--border-strong);
-}
-.trust-metric { display: flex; flex-direction: column; }
-.trust-val {
-  font-family: var(--font-heading);
-  font-size: 1.9rem;
-  font-weight: 800;
-  line-height: 1.1;
-}
+/* Trust Bar in Hero — removed */
 
 /* Interactive Right Holographic 3D Showcase */
 .hero-showcase { position: relative; perspective: 1400px; }
