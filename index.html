@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>byDavidStudio | Multi-Color Luxury & Editorial Web Štúdio</title>
-    <meta name="description" content="Dávid Ďurovský - byDavidStudio. Vytváram esteticky dokonalé, rýchle a konverzne vyladené webové stránky s nekompromisnou kvalitou.">
-    
+    <meta name="description" content="Dávid Ďurovský - byDavidStudio. Pomáham barberom a malým firmám získať viac klientov cez moderný, rýchly a predajný web.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="loading">
@@ -15,14 +19,13 @@
         <div class="scroll-progress-bar"></div>
     </div>
 
-    <!-- Interactive Background Particle & Fluid Canvas + Aurora Layers -->
+    <!-- Fullscreen Interactive Background -->
     <div class="tech-bg">
         <canvas id="bgInteractiveCanvas" class="bg-interactive-canvas"></canvas>
         <div class="grid-layer"></div>
         <div class="aurora-blob a-red"></div>
         <div class="aurora-blob a-green"></div>
         <div class="aurora-blob a-gold"></div>
-        <div class="grain-layer"></div>
     </div>
 
     <!-- Friendly Custom Cursor -->
@@ -46,7 +49,7 @@
             <a href="#domov" class="nav-logo">
                 byDavid<span class="text-gradient">Studio.</span>
             </a>
-            
+
             <nav class="nav-desktop">
                 <a href="#sluzby" class="hover-line">Služby</a>
                 <a href="#proces" class="hover-line">Proces</a>
@@ -61,7 +64,7 @@
                         Začať projekt →
                     </a>
                 </div>
-                
+
                 <button class="mobile-toggle" id="menuToggle" aria-label="Menu">
                     <span class="burger-text font-mono">MENU</span>
                     <div class="hamburger">
@@ -74,9 +77,8 @@
         </div>
     </header>
 
-    <!-- Mobile Fullscreen Menu with Crazy Liquid Dripping Animation ("Farby ako steka") -->
+    <!-- Mobile Fullscreen Menu with Liquid Dripping Animation -->
     <div class="fullscreen-menu" id="fullMenu">
-        <!-- Liquid Paint Dripping Canvas & Curtains -->
         <canvas id="drippingCanvas" class="dripping-canvas"></canvas>
         <div class="drip-curtain drip-red"></div>
         <div class="drip-curtain drip-gold"></div>
@@ -107,43 +109,41 @@
     </div>
 
     <main>
-        
-        <!-- ================= HERO SECTION (IVORY SANDSTONE + RED/GREEN ACCENTS) ================= -->
+
+        <!-- ================= HERO SECTION ================= -->
         <section id="domov" class="hero-section">
             <div class="container hero-grid">
-                
-                <!-- Left Content -->
+
                 <div>
                     <div class="hero-live-pill reveal">
                         <span class="live-dot"></span>
-                        <span class="mono-text" style="color: var(--ink-main)">Sme online — Voľné kapacity Q1/Q2 2026</span>
+                        <span class="mono-text" style="color: var(--ink-main)">Sme online — Rezervácie otvorené pre 2026</span>
                     </div>
-                    
+
                     <h1 class="hero-title">
-                        <span class="reveal block">Weby, ktoré majú</span>
-                        <span class="reveal block text-gradient" style="transition-delay: 0.1s"><span class="font-serif">energiu</span> & eleganciu</span>
-                        <span class="reveal block" style="transition-delay: 0.2s">a zarábajú peniaze.</span>
+                        <span class="reveal block">Weby, ktoré prinášajú</span>
+                        <span class="reveal block text-gradient" style="transition-delay: 0.1s"><span class="font-serif">klientov.</span></span>
+                        <span class="reveal block" style="transition-delay: 0.2s">Nie len pekný dizajn, ale výsledky.</span>
                     </h1>
-                    
+
                     <p class="hero-desc reveal" style="transition-delay: 0.3s">
-                        Som <strong style="color: var(--ink-main)">Dávid Ďurovský</strong>. Spájam taliansku estetiku, pútavé živé farby a bleskový ručný kód pre značky a firmy, ktoré chcú dominovať na trhu.
+                        Som <strong style="color: var(--ink-main)">Dávid Ďurovský</strong>. Pomáham barberom a malým firmám získať viac zákazníkov pomocou rýchlych, moderných a konverzných webov, ktoré zarábajú.
                     </p>
-                    
+
                     <div class="hero-cta-group reveal" style="transition-delay: 0.4s">
                         <div class="magnetic-wrap">
                             <a href="#portfolio" class="btn-crimson magnetic-target">
-                                Preskúmať ukážky ↗
+                                Pozrieť ukážky ↗
                             </a>
                         </div>
                         <div class="magnetic-wrap">
                             <a href="#cennik" class="btn-secondary magnetic-target">
-                                Pozrieť cenník
+                                Zistiť cenu ↗
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Interactive Holographic 3D Showcase -->
                 <div class="hero-showcase reveal" id="heroVisual" style="transition-delay: 0.25s">
                     <div class="holo-border-wrap">
                         <div class="showcase-main-card">
@@ -151,11 +151,10 @@
                                 <span></span><span></span><span></span>
                                 <span class="mono-text" style="font-size: 0.7rem; margin-left: 8px; color: var(--ink-muted)">bydavidstudio.sk // 2026</span>
                             </div>
-                            <img src="heroobrazok.png" alt="Slnečné kreatívne štúdio byDavidStudio">
+                            <img src="images/hero.jpg" alt="byDavidStudio">
                         </div>
                     </div>
 
-                    <!-- Floating Rating Widget -->
                     <div class="float-widget fw-top holo-card">
                         <div class="widget-glow-icon" style="background: rgba(15,108,79,0.12); color: var(--emerald)">✦</div>
                         <div>
@@ -164,7 +163,6 @@
                         </div>
                     </div>
 
-                    <!-- Floating Conversion Widget -->
                     <div class="float-widget fw-bot holo-card">
                         <div class="widget-glow-icon" style="background: rgba(220,56,38,0.12); color: var(--crimson)">⚡</div>
                         <div>
@@ -177,52 +175,60 @@
             </div>
         </section>
 
-        <!-- ================= MARQUEE 1 ================= -->
+        <!-- MARQUEE -->
         <div class="marquee-wrapper">
             <div class="marquee-track" id="marqTrack1">
-                <span class="marquee-item">MULTI-COLOR LUXURY <span class="marq-sep-red">✦</span> RUČNÝ KÓD Z NULY <span class="marq-sep-green">✦</span> EXTRÉMNA RÝCHLOSŤ <span class="marq-sep-red">✦</span> OSOBNÝ PRÍSTUP <span class="marq-sep-green">✦</span> MULTI-COLOR LUXURY <span class="marq-sep-red">✦</span> RUČNÝ KÓD Z NULY <span class="marq-sep-green">✦</span> EXTRÉMNA RÝCHLOSŤ <span class="marq-sep-red">✦</span> OSOBNÝ PRÍSTUP <span class="marq-sep-green">✦</span></span>
-                <span class="marquee-item">MULTI-COLOR LUXURY <span class="marq-sep-red">✦</span> RUČNÝ KÓD Z NULY <span class="marq-sep-green">✦</span> EXTRÉMNA RÝCHLOSŤ <span class="marq-sep-red">✦</span> OSOBNÝ PRÍSTUP <span class="marq-sep-green">✦</span> MULTI-COLOR LUXURY <span class="marq-sep-red">✦</span> RUČNÝ KÓD Z NULY <span class="marq-sep-green">✦</span> EXTRÉMNA RÝCHLOSŤ <span class="marq-sep-red">✦</span> OSOBNÝ PRÍSTUP <span class="marq-sep-green">✦</span></span>
+                <span class="marquee-item">REZERVÁCIE <span class="marq-sep-red">✦</span> MOBILNÉ STRÁNKY <span class="marq-sep-green">✦</span> PREDAJNÉ WEBY <span class="marq-sep-red">✦</span> WEBDESIGN <span class="marq-sep-green">✦</span> BARBER WEB <span class="marq-sep-red">✦</span> SEO OPTIMALIZÁCIA <span class="marq-sep-green">✦</span> </span>
+                <span class="marquee-item">REZERVÁCIE <span class="marq-sep-red">✦</span> MOBILNÉ STRÁNKY <span class="marq-sep-green">✦</span> PREDAJNÉ WEBY <span class="marq-sep-red">✦</span> WEBDESIGN <span class="marq-sep-green">✦</span> BARBER WEB <span class="marq-sep-red">✦</span> SEO OPTIMALIZÁCIA <span class="marq-sep-green">✦</span> </span>
             </div>
         </div>
 
-        <!-- ================= SECTION 2: CREAM IVORY & SNOW WHITE CARDS (SERVICES) ================= -->
+        <!-- SERVICES -->
         <section id="sluzby" class="forest-section">
             <div class="container">
                 <div class="section-head text-center reveal">
-                    <span class="eyebrow eyebrow-green">01 // ŠPECIALIZÁCIA ŠTÚDIA</span>
-                    <h2>V čom vám viem <span class="font-serif text-gradient-green">pomôcť</span></h2>
-                    <p style="color: var(--ink-muted); margin-top: 14px">Zameriavam sa na originálne, esteticky čisté a konverzne vyladené weby. Robím to, v čom som absolútna špička.</p>
+                    <div class="sec-kicker">
+                        <span class="sec-kicker-num">01</span>
+                        <span class="sec-kicker-label">Špecializácia štúdia</span>
+                    </div>
+                    <h2 class="sec-title">Ako vám viem <span class="font-serif text-gradient-green">pomôcť</span></h2>
+                    <span class="sec-rule"></span>
+                    <p class="sec-sub">Web, ktorý vám privedie klientov — nie len pekný dizajn.</p>
                 </div>
-                
+
                 <div class="services-grid">
                     <div class="forest-card reveal" style="transition-delay: 0.1s">
                         <div class="forest-icon">✦</div>
-                        <h3>Dizajn s osobnosťou a štýlom</h3>
-                        <p>Vizuál na mieru prispôsobený vašej značke. Teplé smaragdové odtiene, krásna typografia a plynulá navigácia, vďaka ktorej si vás klienti zapamätajú.</p>
+                        <h3>Viac klientov cez web</h3>
+                        <p>Navrhnem vám web, ktorý presvedčí návštevníkov, aby vás kontaktovali alebo si rovno rezervovali termín.</p>
                     </div>
-                    
+
                     <div class="forest-card reveal" style="transition-delay: 0.2s">
                         <div class="forest-icon">‹/›</div>
-                        <h3>Čistý kód s rýchlosťou blesku</h3>
-                        <p>Nepoužívam ťažkopádne šablóny. Každý riadok kódu píšem ručne, aby sa váš web na každom mobile načítal doslova okamžite a bez sekania.</p>
+                        <h3>Rýchly a bezproblémový proces</h3>
+                        <p>Postarám sa o všetko od návrhu až po spustenie. Vy sa nemusíte starať o technické veci.</p>
                     </div>
-                    
+
                     <div class="forest-card reveal" style="transition-delay: 0.3s">
                         <div class="forest-icon">◈</div>
-                        <h3>SEO & Kompletná starostlivosť</h3>
-                        <p>Pomôžem vám s výberom domény, nasadím web na bezpečný cloudový hosting a vyladím všetko pre Google vyhľadávače od A po Z.</p>
+                        <h3>Web, ktorý funguje na mobile</h3>
+                        <p>Väčšina zákazníkov príde z mobilu. Váš web bude rýchly, prehľadný a pripravený na reálnych ľudí.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ================= SECTION 3: ELEGANT DARK OBSIDIAN + CRIMSON ACCENT (PROCESS) ================= -->
+        <!-- PROCESS -->
         <section id="proces" class="crimson-section">
             <div class="container process-layout">
                 <div class="process-sticky reveal">
-                    <span class="eyebrow">02 // POSTUP SPOLUPRÁCE</span>
-                    <h2 style="font-size: clamp(2.4rem, 4vw, 3.5rem); line-height: 1.1; margin-bottom: 20px">Postup tvorby<br><span class="font-serif text-gradient">krok za krokom</span></h2>
-                    <p style="color: #a5a9ad; margin-bottom: 32px">5 priateľských krokov k vášmu novému webu bez zbytočného stresu a neznámych technických pojmov.</p>
+                    <div class="sec-kicker">
+                        <span class="sec-kicker-num">02</span>
+                        <span class="sec-kicker-label">Postup spolupráce</span>
+                    </div>
+                    <h2 class="sec-title">Od nápadu <span class="font-serif text-gradient">po web</span></h2>
+                    <span class="sec-rule"></span>
+                    <p class="sec-sub" style="margin-bottom: 32px">5 krokov našej spolupráce.</p>
                     <div class="magnetic-wrap">
                         <a href="#kontakt" class="btn-crimson magnetic-target">Poďme sa porozprávať →</a>
                     </div>
@@ -237,8 +243,8 @@
                         <div class="step-marker"></div>
                         <div>
                             <span class="step-num">01.</span>
-                            <h3>Priateľský rozhovor a stratégia</h3>
-                            <p>Zavoláme si alebo napíšeme. Spoznám váš biznis, ciele a spoločne nastavíme ideálnu štruktúru pre váš nový web.</p>
+                            <h3>Konzultácia</h3>
+                            <p>Poznáme sa. Zistím, čo chcete dosiahnuť, komu web má slúžiť a aké sú vaše priority. Bez technických ťažkostí a zložiek.</p>
                         </div>
                     </div>
 
@@ -246,8 +252,8 @@
                         <div class="step-marker"></div>
                         <div>
                             <span class="step-num">02.</span>
-                            <h3>Svieži a moderný grafický návrh</h3>
-                            <p>Vytvorím čistý vizuálny návrh, ktorý nadchne vašich klientov a vizuálne vás okamžite posunie pred konkurenciu.</p>
+                            <h3>Design</h3>
+                            <p>Vytvorím moderný návrh, ktorý bude vyzerať dobre a robiť to, čo má. Spoločne ho doladíme podľa vašich pripomienok.</p>
                         </div>
                     </div>
 
@@ -255,8 +261,8 @@
                         <div class="step-marker"></div>
                         <div>
                             <span class="step-num">03.</span>
-                            <h3>Programovanie a rýchly kód</h3>
-                            <p>Preklopím dizajn do čistého kódu. Pridám jemné, prirodzené animácie, pri ktorých je scrollovanie skutočnou radosťou.</p>
+                            <h3>Vývoj</h3>
+                            <p>Web postavím od nuly. Rýchle načítanie, plne responsívny a pripravený na to, aby ho našla vaša cieľová skupina.</p>
                         </div>
                     </div>
 
@@ -264,8 +270,8 @@
                         <div class="step-marker"></div>
                         <div>
                             <span class="step-num">04.</span>
-                            <h3>Spoločné ladenie detajlov</h3>
-                            <p>Máte k dispozícii 3 kolá bezplatných úprav. Všetko prechádzame a ladíme dovtedy, kým nebudete na 100 % nadšení.</p>
+                            <h3>Revízie</h3>
+                            <p>Prejdeme všetko spoločne, spravím potrebné úpravy a uistím sa, že je to presne tak, ako má byť.</p>
                         </div>
                     </div>
 
@@ -273,32 +279,34 @@
                         <div class="step-marker"></div>
                         <div>
                             <span class="step-num">05.</span>
-                            <h3>Bezproblémové spustenie</h3>
-                            <p>Nasadím web na vašu doménu, zapnem certifikáty bezpečnosti a s radosťou vám odovzdám hotový produkt.</p>
+                            <h3>Spustenie</h3>
+                            <p>Nasadím web na doménu, nastavím hosting a odosielam všetko. Máte hotový web, ktorý hneď môže pracovať.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ================= HORIZONTAL PORTFÓLIO ================= -->
+        <!-- HORIZONTAL PORTFOLIO -->
         <section id="portfolio" class="portfolio-scroll-wrapper">
             <div class="portfolio-sticky-box">
                 <div class="portfolio-horizontal-track">
-                    
-                    <!-- Intro Panel -->
+
                     <div class="horizontal-panel intro-panel">
-                        <span class="eyebrow">03 // UKÁŽKY PRÁC</span>
-                        <h2>Moja <span class="text-gradient">práca.</span></h2>
-                        <p style="color: var(--ink-muted); font-size: 1.15rem; margin-bottom: 30px">Každý projekt robím s maximálnym citom pre estetiku a konverzie. Posúvajte scroll ďalej a pozrite si ukážky.</p>
+                        <div class="sec-kicker">
+                            <span class="sec-kicker-num">03</span>
+                            <span class="sec-kicker-label">Ukážky prác</span>
+                        </div>
+                        <h2 class="sec-title sec-title--xl">Moja <span class="text-gradient">práca.</span></h2>
+                        <span class="sec-rule"></span>
+                        <p class="sec-sub" style="margin-bottom: 30px">Každý projekt robím s maximálnym citom pre estetiku a konverzie. Posúvajte scroll ďalej a pozrite si ukážky.</p>
                         <span style="font-size: 2.5rem; color: var(--crimson)">⟶</span>
                     </div>
 
-                    <!-- Project Panel 1 -->
                     <div class="horizontal-panel project-panel">
                         <div class="white-card project-card">
                             <div class="proj-preview">
-                                <img src="barista.jpg" alt="Artisan Resort">
+                                <img src="images/artisan.jpg" alt="Artisan Resort">
                             </div>
                             <div>
                                 <div class="proj-tags">
@@ -316,11 +324,10 @@
                         </div>
                     </div>
 
-                    <!-- Project Panel 2 -->
                     <div class="horizontal-panel project-panel">
                         <div class="white-card project-card">
                             <div class="proj-preview">
-                                <img src="project1.png" alt="DavidosBarberos">
+                                <img src="images/barber.jpg" alt="DavidosBarberos">
                             </div>
                             <div>
                                 <div class="proj-tags">
@@ -338,9 +345,8 @@
                         </div>
                     </div>
 
-                    <!-- Outro Panel -->
                     <div class="horizontal-panel outro-panel">
-                        <h2>Aj váš web môže mať <span class="text-gradient">takúto čistotu.</span></h2>
+                        <h2 class="sec-title sec-title--xl">Aj váš web môže mať <span class="text-gradient">takúto čistotu.</span></h2>
                         <div class="magnetic-wrap mt-4">
                             <a href="#kontakt" class="circle-cta magnetic-target">Napíšte mi</a>
                         </div>
@@ -350,84 +356,101 @@
             </div>
         </section>
 
-        <!-- ================= SECTION 5: DARK OBSIDIAN CHARCOAL (PRICING & FAQ & CONTACT) ================= -->
+        <!-- PRICING -->
         <section id="cennik" class="dark-section">
             <div class="container">
                 <div class="section-head text-center reveal">
-                    <span class="eyebrow">04 // FÉR CENY BEZ SKRYTÝCH HÁČIKOV</span>
-                    <h2>Transparentné <span class="font-serif" style="color: var(--gold-light)">ceny</span></h2>
-                    <p class="mono-text mt-4" style="color: #9a9e9c">// Rozsah investície väčšiny projektov: 200–500 €.</p>
+                    <div class="sec-kicker">
+                        <span class="sec-kicker-num">04</span>
+                        <span class="sec-kicker-label">Fér ceny bez háčikov</span>
+                    </div>
+                    <h2 class="sec-title">Transparentné <span class="font-serif" style="color: var(--gold-light)">ceny</span></h2>
+                    <span class="sec-rule"></span>
+                    <p class="mono-text sec-sub mt-4" style="color: #9a9e9c">Rozsah investície väčšiny projektov: 200–500 €.</p>
                 </div>
 
                 <div class="pricing-grid">
-                    <!-- Starter -->
                     <div class="price-card reveal" style="transition-delay: 0.1s">
                         <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 28px">
-                            <span class="p-tier">Starter Web</span>
+                            <span class="p-tier">STARTER WEB</span>
                             <div class="p-price">200 €</div>
                             <span class="mono-text">Dodanie 3–7 dní</span>
                         </div>
+                        <p class="p-desc">Pre jednotlivcov a malé firmy, ktoré potrebujú jednoduchú online prezentáciu.</p>
                         <ul class="p-features">
-                            <li><i>✓</i> Svieži a moderný dizajn</li>
-                            <li><i>✓</i> 100% zobrazenie na mobiloch</li>
-                            <li><i>✓</i> Galéria, kontakt a mapa</li>
+                            <li><i>✓</i> Moderný dizajn</li>
+                            <li><i>✓</i> Mobilná verzia</li>
+                            <li><i>✓</i> Galéria</li>
+                            <li><i>✓</i> Kontaktné údaje</li>
+                            <li><i>✓</i> Mapa</li>
                             <li><i>✓</i> Pomoc s doménou a hostingom</li>
+                            <li><i>✓</i> Dodanie: 3–7 dní</li>
                         </ul>
                         <div class="magnetic-wrap w-full">
-                            <a href="#kontakt" class="btn-secondary magnetic-target w-full text-center" style="background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.2)">Mám záujem</a>
+                            <a href="#kontakt" class="btn-secondary magnetic-target w-full text-center" style="background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.2)">Kontaktovať →</a>
                         </div>
                     </div>
 
-                    <!-- Business (CONTRAST FOREST GREEN CARD) -->
                     <div class="price-card featured reveal" style="transition-delay: 0.2s">
-                        <div class="pop-badge">Najobľúbenejšie</div>
+                        <div class="pop-badge">Odporúčané</div>
                         <div style="border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 28px">
-                            <span class="p-tier">Business Web</span>
+                            <span class="p-tier">BUSINESS WEB</span>
                             <div class="p-price" style="color: var(--gold-light)">350 €</div>
                             <span class="mono-text" style="color: #cbd5e1">Dodanie 1–3 týždne</span>
                         </div>
+                        <p class="p-desc">Pre podnikateľov, ktorí chcú získavať klientov cez web.</p>
                         <ul class="p-features">
-                            <li style="color: #ffffff; font-weight: 700"><i>+</i> Všetko zo Starter balíka</li>
-                            <li><i>✓</i> Pokročilý dopytový formulár</li>
-                            <li><i>✓</i> Napojenie na rezervačný systém</li>
-                            <li><i>✓</i> Nastavenie pre Google vyhľadávače</li>
-                            <li><i>✓</i> Maximálna rýchlosť načítania</li>
+                            <li style="color: #ffffff; font-weight: 700"><i>+</i> Všetko zo Starter Web</li>
+                            <li><i>✓</i> Kontaktný formulár</li>
+                            <li><i>✓</i> Online rezervácie (Booqme)</li>
+                            <li><i>✓</i> Viac sekcií alebo podstránok</li>
+                            <li><i>✓</i> Základné SEO</li>
+                            <li><i>✓</i> Google Search Console</li>
+                            <li><i>✓</i> Optimalizácia rýchlosti</li>
+                            <li><i>✓</i> Dodanie: 1–3 týždne</li>
                         </ul>
                         <div class="magnetic-wrap w-full">
-                            <a href="#kontakt" class="btn-crimson magnetic-target w-full text-center">Zvoliť Business</a>
+                            <a href="#kontakt" class="btn-crimson magnetic-target w-full text-center">Kontaktovať →</a>
                         </div>
                     </div>
 
-                    <!-- Custom -->
                     <div class="price-card reveal" style="transition-delay: 0.3s">
                         <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 28px">
-                            <span class="p-tier">Custom Riešenie</span>
-                            <div class="p-price">Dohodou</div>
+                            <span class="p-tier">CUSTOM RIEŠENIE</span>
+                            <div class="p-price">Cena dohodou</div>
                             <span class="mono-text">Individuálny čas</span>
                         </div>
+                        <p class="p-desc">Pre klientov s individuálnymi požiadavkami.</p>
                         <ul class="p-features">
-                            <li><i>✓</i> Unikátny web šitý na mieru</li>
-                            <li><i>✓</i> Pútavé interaktívne animácie</li>
-                            <li><i>✓</i> Napojenie na externé systémy</li>
-                            <li><i>✓</i> Viacjazyčné verzie webu</li>
+                            <li><i>✓</i> Návrh na mieru</li>
+                            <li><i>✓</i> Unikátny dizajn</li>
+                            <li><i>✓</i> Pokročilé animácie</li>
+                            <li><i>✓</i> Integrácie externých služieb</li>
+                            <li><i>✓</i> Viac jazykových verzií</li>
+                            <li><i>✓</i> Špecifické požiadavky podľa projektu</li>
+                            <li><i>✓</i> Kontaktujte ma pre nezáväznú konzultáciu.</li>
                         </ul>
                         <div class="magnetic-wrap w-full">
-                            <a href="#kontakt" class="btn-secondary magnetic-target w-full text-center" style="background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.2)">Konzultovať</a>
+                            <a href="#kontakt" class="btn-secondary magnetic-target w-full text-center" style="background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.2)">Kontaktovať →</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ in Dark — High Contrast Clean Design -->
+        <!-- FAQ -->
         <section id="faq" class="dark-section" style="padding-top: 60px">
             <div class="container faq-layout">
                 <div class="faq-sticky reveal">
-                    <span class="eyebrow">05 // ČASTÉ OTÁZKY</span>
-                    <h2 style="font-size: clamp(2.4rem, 4vw, 3.5rem); line-height: 1.1; margin-bottom: 20px; color: #ffffff">Časté<br><span class="font-serif" style="color: var(--gold-light)">otázky</span></h2>
-                    <p style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.6">Nenašli ste odpoveď na vašu otázku? Kľudne mi napíšte a radi to preberieme.</p>
+                    <div class="sec-kicker">
+                        <span class="sec-kicker-num">05</span>
+                        <span class="sec-kicker-label">Časté otázky</span>
+                    </div>
+                    <h2 class="sec-title">Časté<br><span class="font-serif" style="color: var(--gold-light)">otázky</span></h2>
+                    <span class="sec-rule"></span>
+                    <p class="sec-sub">Nenašli ste odpoveď na vašu otázku? Kľudne mi napíšte a radi to preberieme.</p>
                 </div>
-                
+
                 <div class="faq-list">
                     <div class="accordion-item reveal">
                         <button class="accordion-head">
@@ -472,130 +495,135 @@
             </div>
         </section>
 
-        <!-- CONTACT in Dark -->
+        <!-- CONTACT -->
         <section id="kontakt" class="dark-section" style="padding-top: 40px">
             <div class="container">
                 <div class="section-head text-center reveal">
-                    <span class="eyebrow eyebrow-green">06 // POĎME SI NEZÁVÄZNE POKECAŤ</span>
-                    <h2>Poďme na <span class="text-gradient-green">to.</span></h2>
+                    <div class="sec-kicker">
+                        <span class="sec-kicker-num">06</span>
+                        <span class="sec-kicker-label">Nezáväzná konzultácia</span>
+                    </div>
+                    <h2 class="sec-title">Poďme na <span class="text-gradient-green">to.</span></h2>
+                    <span class="sec-rule"></span>
                 </div>
 
-                <div class="contact-card reveal" style="transition-delay: 0.1s">
-                    <div class="c-left">
-                        <div class="c-info-box">
-                            <div class="c-icon c-icon-neutral">☏</div>
-                            <div>
-                                <span class="mono-text" style="color: #9a9e9c">Zavolajte mi</span>
-                                <a href="tel:+421907295094" class="hover-line" style="display: block; font-size: 1.2rem; font-weight: 700; color: #fff">+421 907 295 094</a>
-                            </div>
-                        </div>
-                        
-                        <div class="c-info-box">
-                            <div class="c-icon c-icon-neutral">✉</div>
-                            <div>
-                                <span class="mono-text" style="color: #9a9e9c">Napíšte mi e-mail</span>
-                                <a href="mailto:bydavidstudio@gmail.com" class="hover-line" style="display: block; font-size: 1.2rem; font-weight: 700; color: #fff">bydavidstudio@gmail.com</a>
-                            </div>
-                        </div>
-                        
-                        <div class="c-info-box">
-                            <div class="c-icon c-icon-neutral">◎</div>
-                            <div>
-                                <span class="mono-text" style="color: #9a9e9c">Lokalita a čas</span>
-                                <strong style="display: block; font-size: 1.15rem; font-weight: 700; color: #fff">Zvolen (Po–Pi: 09:00 – 18:00)</strong>
-                            </div>
-                        </div>
+                <div class="contact-wrap reveal" style="transition-delay: 0.1s">
 
-                        <div style="display: flex; gap: 16px; margin-top: 10px">
-                            <div class="magnetic-wrap">
-                                <a href="https://instagram.com/daviddurovsky" target="_blank" rel="noreferrer" class="c-icon c-icon-neutral c-icon-sm magnetic-target">IG</a>
+                    <!-- Quick contact chips above the form -->
+                    <div class="contact-chips">
+                        <a href="tel:+421907295094" class="chip">
+                            <span class="chip-emoji">📞</span>
+                            <div class="chip-text">
+                                <span class="chip-label">Telefón</span>
+                                <strong>+421 907 295 094</strong>
                             </div>
-                            <div class="magnetic-wrap">
-                                <a href="https://davidstudio.sk" target="_blank" rel="noreferrer" class="c-icon c-icon-neutral c-icon-sm magnetic-target">WEB</a>
+                        </a>
+                        <a href="mailto:bydavidstudio@gmail.com" class="chip">
+                            <span class="chip-emoji">✉️</span>
+                            <div class="chip-text">
+                                <span class="chip-label">E-mail</span>
+                                <strong>bydavidstudio@gmail.com</strong>
+                            </div>
+                        </a>
+                        <div class="chip">
+                            <span class="chip-emoji">📍</span>
+                            <div class="chip-text">
+                                <span class="chip-label">Lokalita</span>
+                                <strong>Zvolen · Po–Pi 09–18</strong>
                             </div>
                         </div>
                     </div>
 
-                    <div class="c-right">
-                        <div class="form-header">
-                            <span class="mono-text" style="color: var(--gold-light); display: block; margin-bottom: 6px">// KROK K NOVÉMU WEBU</span>
-                            <h3 class="form-title">Poďme <span class="font-serif" style="color: var(--gold-light)">vytvoriť</span> niečo výnimočné</h3>
-                            <p class="form-subtitle">Vyberte si službu, popíšte vašu predstavu a do 24 hodín sa vám ozvem späť.</p>
+                    <!-- The form card -->
+                    <div class="form-card">
+                        <!-- Decorative corner glow -->
+                        <div class="form-card-glow form-card-glow--tl"></div>
+                        <div class="form-card-glow form-card-glow--br"></div>
+
+                        <div class="form-card-header">
+                            <h3 class="form-card-title">Poďme <span class="font-serif" style="color: var(--gold-light)">vytvoriť</span> niečo výnimočné</h3>
+                            <p class="form-card-sub">Vyberte si službu, popíšte vašu predstavu a do 24 hodín sa vám ozvem späť.</p>
                         </div>
-                        
-                        <form action="https://formspree.io/f/mdpzakvq" method="POST" class="premium-form" id="contactForm">
-                            <!-- Interactive Visual Service Picker Cards -->
-                            <div class="form-section-label">
-                                <span class="font-mono">01</span> Vyberte si službu:
+
+                        <form action="https://formspree.io/f/mdpzakvq" method="POST" class="new-form" id="contactForm">
+                            <!-- Step 1: Service picker -->
+                            <div class="nf-label">
+                                <span class="nf-label-num font-mono">01</span>
+                                <span>Vyberte si službu</span>
                             </div>
                             <input type="hidden" name="service" id="selectedService" value="Business Web (350 €)" required>
-                            <div class="service-picker-grid">
-                                <button type="button" class="picker-card" data-val="Nezáväzný pokec (Zdarma)">
-                                    <span class="picker-icon">💬</span>
-                                    <div class="picker-info">
-                                        <strong>Konzultácia</strong>
-                                        <span>Nezáväzný pokec</span>
-                                    </div>
+                            <div class="nf-picker">
+                                <button type="button" class="nf-pick" data-val="Nezáväzný pokec (Zdarma)">
+                                    <span class="nf-pick-emoji">💬</span>
+                                    <strong>Konzultácia</strong>
+                                    <span class="nf-pick-meta">Zdarma</span>
                                 </button>
-
-                                <button type="button" class="picker-card" data-val="Starter Web (od 200 €)">
-                                    <span class="picker-icon">🚀</span>
-                                    <div class="picker-info">
-                                        <strong>Starter Web</strong>
-                                        <span>od 200 € • 3–7 dní</span>
-                                    </div>
+                                <button type="button" class="nf-pick" data-val="Starter Web (od 200 €)">
+                                    <span class="nf-pick-emoji">🚀</span>
+                                    <strong>Starter</strong>
+                                    <span class="nf-pick-meta">od 200 €</span>
                                 </button>
-
-                                <button type="button" class="picker-card active" data-val="Business Web (350 €)">
-                                    <span class="picker-badge">Odporúčané</span>
-                                    <span class="picker-icon">⭐</span>
-                                    <div class="picker-info">
-                                        <strong>Business Web</strong>
-                                        <span>od 350 € • 1–3 týždne</span>
-                                    </div>
+                                <button type="button" class="nf-pick active" data-val="Business Web (350 €)">
+                                    <span class="nf-pick-badge">★</span>
+                                    <span class="nf-pick-emoji">⭐</span>
+                                    <strong>Business</strong>
+                                    <span class="nf-pick-meta">od 350 €</span>
                                 </button>
-
-                                <button type="button" class="picker-card" data-val="Custom Riešenie na mieru">
-                                    <span class="picker-icon">🎯</span>
-                                    <div class="picker-info">
-                                        <strong>Custom Riešenie</strong>
-                                        <span>Dohodou na mieru</span>
-                                    </div>
+                                <button type="button" class="nf-pick" data-val="Custom Riešenie na mieru">
+                                    <span class="nf-pick-emoji">🎯</span>
+                                    <strong>Custom</strong>
+                                    <span class="nf-pick-meta">Dohodou</span>
                                 </button>
                             </div>
 
-                            <div class="form-section-label" style="margin-top: 10px">
-                                <span class="font-mono">02</span> Kontaktné údaje a správa:
+                            <!-- Step 2: Inputs -->
+                            <div class="nf-label">
+                                <span class="nf-label-num font-mono">02</span>
+                                <span>Vaše údaje & správa</span>
                             </div>
 
-                            <div class="form-grid-2">
-                                <div class="field-group">
-                                    <input type="text" name="name" id="name" required placeholder="Vaše meno / Firma">
-                                    <div class="field-highlight"></div>
+                            <div class="nf-row">
+                                <div class="nf-field">
+                                    <label class="nf-field-label" for="name">Meno / Firma</label>
+                                    <input type="text" name="name" id="name" required placeholder="Ján Novák">
                                 </div>
-                                <div class="field-group">
-                                    <input type="email" name="email" id="email" required placeholder="Váš e-mail">
-                                    <div class="field-highlight"></div>
+                                <div class="nf-field">
+                                    <label class="nf-field-label" for="email">E-mail</label>
+                                    <input type="email" name="email" id="email" required placeholder="jan@firma.sk">
                                 </div>
                             </div>
-                            
-                            <div class="field-group">
-                                <textarea name="message" id="message" rows="3" required placeholder="Popíšte stručne váš projekt, ciele alebo akúkoľvek predstavu..."></textarea>
-                                <div class="field-highlight"></div>
+
+                            <div class="nf-field">
+                                <label class="nf-field-label" for="message">Správa</label>
+                                <textarea name="message" id="message" rows="4" required placeholder="Popíšte stručne váš projekt alebo akúkoľvek predstavu..."></textarea>
                             </div>
 
-                            <button type="submit" class="btn-submit">
-                                <span class="btn-text">Odoslať nezáväzný dopyt</span>
-                                <span class="btn-icon">↗</span>
-                                <div class="btn-bg"></div>
+                            <button type="submit" class="nf-submit">
+                                <span>Odoslať nezáväzný dopyt</span>
+                                <span class="nf-submit-arrow">→</span>
                             </button>
                         </form>
+
+                        <!-- Social row -->
+                        <div class="form-card-social">
+                            <div class="magnetic-wrap">
+                                <a href="https://instagram.com/daviddurovsky" target="_blank" rel="noreferrer" class="social-pill magnetic-target">
+                                    <span>IG</span> Instagram
+                                </a>
+                            </div>
+                            <div class="magnetic-wrap">
+                                <a href="https://davidstudio.sk" target="_blank" rel="noreferrer" class="social-pill magnetic-target">
+                                    <span>↗</span> davidstudio.sk
+                                </a>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- ================= FOOTER ================= -->
+        <!-- FOOTER -->
         <footer>
             <div class="marquee-wrapper footer-marq">
                 <div class="marquee-track" id="marqTrack2">
@@ -603,19 +631,19 @@
                     <span class="marquee-item">byDavidStudio <span class="marq-sep-gold">✦</span> © 2026 Dávid Ďurovský <span class="marq-sep-gold">✦</span> Všetky práva vyhradené <span class="marq-sep-gold">✦</span> byDavidStudio <span class="marq-sep-gold">✦</span> © 2026 Dávid Ďurovský <span class="marq-sep-gold">✦</span> Všetky práva vyhradené <span class="marq-sep-gold">✦</span></span>
                 </div>
             </div>
-            
+
             <div class="container footer-bottom">
                 <div class="nav-logo" style="color: #fff">
                     byDavid<span class="text-gradient">Studio.</span>
                 </div>
-                
+
                 <div style="display: flex; gap: 32px; font-weight: 600; color: #9a9e9c">
                     <a href="#domov" class="hover-line">Domov</a>
                     <a href="#sluzby" class="hover-line">Služby</a>
                     <a href="#cennik" class="hover-line">Cenník</a>
                     <a href="#portfolio" class="hover-line">Portfólio</a>
                 </div>
-                
+
                 <div class="mono-text" style="color: #9a9e9c">
                     Vytvorené s vášňou a dôrazom na detail. <span style="color: var(--gold-light)">✦</span>
                 </div>
