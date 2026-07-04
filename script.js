@@ -122,8 +122,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- 5.5 FULL-SCREEN INTERACTIVE WAVE MESH BACKGROUND ---
   const bgCanvas = document.getElementById('bgInteractiveCanvas');
-  if (bgCanvas && !isTouch) {
+  if (bgCanvas) {
     const ctx = bgCanvas.getContext('2d');
+
+    bgCanvas.style.touchAction = 'none';
+
+    const isTouchBg = isTouch;
+    const moteCount = isTouchBg ? 24 : 46;
+    const pulseCount = isTouchBg ? 8 : 16;
+    const bgSpacing = isTouchBg ? 86 : 74;
+
     if (ctx) {
       let width = bgCanvas.width = window.innerWidth;
       let height = bgCanvas.height = window.innerHeight;
@@ -145,9 +153,16 @@ document.addEventListener('DOMContentLoaded', function () {
         mouseY = e.clientY;
       });
 
+      bgCanvas.addEventListener('touchmove', function (e) {
+        if (e.touches.length > 0) {
+          mouseX = e.touches[0].clientX;
+          mouseY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+
       const trail = [];
 
-      const motes = Array.from({ length: 46 }, function () {
+      const motes = Array.from({ length: moteCount }, function () {
         return {
           x: Math.random() * width,
           y: Math.random() * height,
@@ -159,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
       });
 
-      const pulses = Array.from({ length: 16 }, function () {
+      const pulses = Array.from({ length: pulseCount }, function () {
         return {
           c: 0,
           r: 0,
@@ -169,18 +184,16 @@ document.addEventListener('DOMContentLoaded', function () {
         };
       });
 
-      const spacing = 74;
-
       function gridCounts() {
         return {
-          gc: Math.ceil(width / spacing) + 2,
-          gr: Math.ceil(height / spacing) + 2
+          gc: Math.ceil(width / bgSpacing) + 2,
+          gr: Math.ceil(height / bgSpacing) + 2
         };
       }
 
       function getPoint(c, r, time, targetX, targetY, scrollShift) {
-        const baseX = c * spacing;
-        const baseY = r * spacing + scrollShift;
+        const baseX = c * bgSpacing;
+        const baseY = r * bgSpacing + scrollShift;
 
         const wx = Math.sin(baseY * 0.012 + time * 0.0011) * 12
           + Math.cos((baseX + baseY) * 0.006 - time * 0.0009) * 8;
@@ -213,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
         lastY = currY;
 
         const time = performance.now();
-        const scrollShift = -(((window.scrollY * 0.15) % spacing));
+        const scrollShift = -(((window.scrollY * 0.15) % bgSpacing));
 
         const counts = gridCounts();
         const gc = counts.gc;
@@ -241,7 +254,6 @@ document.addEventListener('DOMContentLoaded', function () {
           pts.push(row);
         }
 
-        // Horizontal glowing lines
         ctx.shadowBlur = 8;
         for (let r = 0; r < pts.length; r++) {
           const t = r / pts.length;
@@ -262,7 +274,6 @@ document.addEventListener('DOMContentLoaded', function () {
           ctx.stroke();
         }
 
-        // Vertical glowing lines
         for (let c = 0; c < gc + 1; c++) {
           const t = c / (gc + 1);
           const alpha = 0.1 + Math.sin(t * Math.PI) * 0.08;
@@ -271,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function () {
           ctx.lineWidth = 0.8;
           ctx.beginPath();
           for (let r = 0; r < pts.length; r++) {
-            const p = pts[r][c];
+            const p = pts[r] && pts[r][c];
             if (!p) continue;
             if (r === 0) ctx.moveTo(p.x, p.y);
             else ctx.lineTo(p.x, p.y);
@@ -280,7 +291,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         ctx.shadowBlur = 0;
 
-        // Nodes flare up near the cursor
         ctx.shadowBlur = 14;
         ctx.shadowColor = 'rgba(243, 202, 131, 0.9)';
         for (let r = 0; r < pts.length; r++) {
@@ -296,7 +306,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         ctx.shadowBlur = 0;
 
-        // Flowing energy pulses
         ctx.shadowBlur = 10;
         pulses.forEach(function (pulse) {
           pulse.progress += pulse.speed;
@@ -321,7 +330,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         ctx.shadowBlur = 0;
 
-        // Floating luminous motes
         motes.forEach(function (m) {
           m.y -= m.drift * m.z;
           m.x += Math.sin(time * 0.0004 + m.phase) * 0.3;
@@ -336,7 +344,6 @@ document.addEventListener('DOMContentLoaded', function () {
           ctx.fill();
         });
 
-        // Cursor comet trail
         for (let i = 0; i < trail.length; i++) {
           const tt = trail[i];
           const a = (i / trail.length) * 0.4;

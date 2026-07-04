@@ -262,6 +262,7 @@ h1, h2, h3, h4 {
   height: 100%;
   z-index: 1;
   opacity: 1;
+  touch-action: none;
 }
 .grid-layer {
   position: absolute;
