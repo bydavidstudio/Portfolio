@@ -512,15 +512,16 @@ document.addEventListener('DOMContentLoaded', function () {
   // --- 10. HORIZONTAL PORTFOLIO SCROLL ENGINE ---
   const horizWrapper = document.querySelector('.portfolio-scroll-wrapper');
   const horizTrack = document.querySelector('.portfolio-horizontal-track');
+  const horizontalMobileMode = isTouch || window.matchMedia('(max-width: 768px)').matches;
   let horizontalMaxTranslate = 0;
 
   const recalculateHorizontalMetrics = function () {
-    if (!horizTrack) return;
+    if (!horizTrack || horizontalMobileMode) return;
     horizontalMaxTranslate = Math.max(0, horizTrack.scrollWidth - window.innerWidth);
   };
 
   const updateHorizontalScroll = function () {
-    if (!horizWrapper || !horizTrack) return;
+    if (!horizWrapper || !horizTrack || horizontalMobileMode) return;
     const rect = horizWrapper.getBoundingClientRect();
     const scrollDistance = rect.height - window.innerHeight;
 

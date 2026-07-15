@@ -1593,11 +1593,32 @@ footer { padding: 0 0 48px 0; background: var(--bg-dark); color: #fff; }
   .pricing-grid { grid-template-columns: 1fr; }
   .forest-card, .price-card { padding: 32px 24px; border-radius: 24px; }
 
-  /* Smooth horizontal scroll adjustment for mobile screens */
-  .portfolio-scroll-wrapper { height: 290vh; }
-  .portfolio-horizontal-track { padding: 0 5vw; gap: 7vw; }
-  .intro-panel { width: 88vw; }
-  .project-panel { width: 90vw; }
+  /* On touch screens use a normal vertical portfolio instead of mapping
+     vertical finger scrolling to a JavaScript horizontal transform. This is
+     smoother, more accessible and much easier to use on a phone. */
+  .portfolio-scroll-wrapper { height: auto; }
+  .portfolio-sticky-box {
+    position: relative;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+  .portfolio-horizontal-track {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 36px;
+    padding: 0 20px;
+    transform: none !important;
+  }
+  .horizontal-panel,
+  .intro-panel,
+  .project-panel,
+  .outro-panel {
+    width: 100%;
+    max-width: none;
+  }
   .project-card { padding: 22px; border-radius: 24px; }
   .project-card h3 { font-size: 1.8rem; }
   .circle-cta { width: 150px; height: 150px; font-size: 1.05rem; }
@@ -1609,9 +1630,58 @@ footer { padding: 0 0 48px 0; background: var(--bg-dark); color: #fff; }
   .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
 }
 
+/* Touch tablets use the same stable vertical portfolio mode as phones. */
+@media (pointer: coarse) and (min-width: 769px) {
+  .portfolio-scroll-wrapper { height: auto; }
+  .portfolio-sticky-box {
+    position: relative;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+  .portfolio-horizontal-track {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 48px;
+    padding: 0 24px;
+    transform: none !important;
+  }
+  .horizontal-panel,
+  .intro-panel,
+  .project-panel,
+  .outro-panel {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Lightweight mobile background: static, warm and branded. The desktop
+   canvas/aurora effect is intentionally replaced on touch screens so the
+   background never competes with scrolling or the hero content. */
+@media (max-width: 768px), (pointer: coarse) {
+  .tech-bg {
+    background-color: var(--bg-main);
+    background-image:
+      radial-gradient(90% 38% at -8% 0%, rgba(220, 56, 38, 0.13), transparent 72%),
+      radial-gradient(85% 42% at 108% 52%, rgba(15, 108, 79, 0.11), transparent 72%),
+      radial-gradient(75% 35% at 50% 100%, rgba(217, 150, 50, 0.10), transparent 72%),
+      radial-gradient(circle, rgba(20, 24, 21, 0.055) 1px, transparent 1.2px);
+    background-size: auto, auto, auto, 24px 24px;
+    background-position: center, center, center, 0 0;
+  }
+
+  .tech-bg .bg-interactive-canvas,
+  .tech-bg .grid-layer,
+  .tech-bg .aurora-blob {
+    display: none;
+  }
+}
+
 /* On mobile the preloader was detected as the LCP element. Let the real hero
    content paint immediately instead of covering it with a loading screen. */
-@media (max-width: 768px) {
+@media (max-width: 768px), (pointer: coarse) {
   .premium-preloader { display: none; }
   body.loading { overflow-x: clip; overflow-y: auto; }
 
