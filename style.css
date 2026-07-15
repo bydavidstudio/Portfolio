@@ -894,7 +894,30 @@ body.menu-open .menu-footer { opacity: 1; transform: translateY(0); }
   background: transparent;
   border: none;
 }
-.marquee-track { display: flex; white-space: nowrap; width: max-content; will-change: transform; }
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-left 28s linear infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+.footer-marq .marquee-track {
+  animation-name: marquee-right;
+  animation-duration: 32s;
+}
+@keyframes marquee-left {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes marquee-right {
+  from { transform: translate3d(-50%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; transform: none; }
+}
 .marquee-item {
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 3.5vw, 3.2rem);
@@ -1014,7 +1037,13 @@ section { padding: 110px 0; position: relative; }
   gap: 40px; align-items: center;
 }
 .proj-preview { border-radius: 22px; overflow: hidden; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-md); }
-.proj-preview img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+.proj-preview img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  display: block;
+}
 .proj-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
 .proj-tag {
   padding: 5px 14px; border: 1px solid var(--border-strong); background: #f0ebe1;
@@ -1585,6 +1614,14 @@ footer { padding: 0 0 48px 0; background: var(--bg-dark); color: #fff; }
 @media (max-width: 768px) {
   .premium-preloader { display: none; }
   body.loading { overflow-x: clip; overflow-y: auto; }
+
+  /* Do not hide the above-the-fold hero behind reveal animations on mobile.
+     This lets Lighthouse and real users see useful content immediately. */
+  .hero-section .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 @media (max-width: 480px) {

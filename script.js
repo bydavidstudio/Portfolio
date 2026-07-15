@@ -512,73 +512,57 @@ document.addEventListener('DOMContentLoaded', function () {
   // --- 10. HORIZONTAL PORTFOLIO SCROLL ENGINE ---
   const horizWrapper = document.querySelector('.portfolio-scroll-wrapper');
   const horizTrack = document.querySelector('.portfolio-horizontal-track');
+  let horizontalMaxTranslate = 0;
+
+  const recalculateHorizontalMetrics = function () {
+    if (!horizTrack) return;
+    horizontalMaxTranslate = Math.max(0, horizTrack.scrollWidth - window.innerWidth);
+  };
+
   const updateHorizontalScroll = function () {
     if (!horizWrapper || !horizTrack) return;
     const rect = horizWrapper.getBoundingClientRect();
     const scrollDistance = rect.height - window.innerHeight;
-    if (scrollDistance > 0) {
-      let progress = 0;
-      if (rect.top <= 0) {
-        progress = -rect.top / scrollDistance;
-      }
-      progress = Math.max(0, Math.min(1, progress));
-      const maxTranslate = horizTrack.scrollWidth - window.innerWidth;
-      horizTrack.style.transform = 'translate3d(' + (-progress * maxTranslate) + 'px, 0, 0)';
+
+    if (scrollDistance <= 0) {
+      horizTrack.style.transform = 'translate3d(0, 0, 0)';
+      return;
     }
+
+    let progress = rect.top <= 0 ? -rect.top / scrollDistance : 0;
+    progress = Math.max(0, Math.min(1, progress));
+    horizTrack.style.transform = 'translate3d(' + (-progress * horizontalMaxTranslate) + 'px, 0, 0)';
   };
 
-  // --- 11. SILKY SMOOTH MARQUEE ENGINE (SCROLL ACCELERATED) ---
-  const marquees = [
-    { el: document.getElementById('marqTrack1'), offset: 0, speed: 50, currentSpeed: 50, boost: 0, dir: 1 },
-    { el: document.getElementById('marqTrack2'), offset: 0, speed: 38, currentSpeed: 38, boost: 0, dir: -1 }
-  ];
-
-  let lastScrollY = window.scrollY;
-  let lastTime = performance.now();
-
-  window.addEventListener('scroll', function () {
-    const y = window.scrollY;
-    const delta = Math.abs(y - lastScrollY);
-    lastScrollY = y;
-
-    marquees.forEach(function (m) {
-      if (m.el) {
-        m.boost = Math.min(m.boost + delta * 15, 800);
-      }
-    });
-
-    updateScrollProgress();
-    updateNavbar();
-    updateProcessTimeline();
+  window.addEventListener('resize', function () {
+    recalculateHorizontalMetrics();
     updateHorizontalScroll();
   }, { passive: true });
 
-  const renderLoop = function (now) {
-    const dt = Math.min((now - lastTime) / 1000, 0.05);
-    lastTime = now;
-
-    marquees.forEach(function (m) {
-      if (!m.el) return;
-      const el = m.el;
-      const singleWidth = el.scrollWidth / 2;
-
-      m.boost *= Math.pow(0.05, dt);
-
-      const targetSpeed = m.speed + m.boost;
-      m.currentSpeed += (targetSpeed - m.currentSpeed) * Math.min(1, dt * 7);
-
-      m.offset += m.currentSpeed * dt * m.dir;
-
-      if (singleWidth > 0) {
-        m.offset = ((m.offset % singleWidth) + singleWidth) % singleWidth;
-      }
-
-      el.style.transform = 'translate3d(' + (-m.offset) + 'px, 0, 0)';
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () {
+      recalculateHorizontalMetrics();
+      updateHorizontalScroll();
     });
+  }
 
-    requestAnimationFrame(renderLoop);
+  // --- 11. COMPOSITOR-BASED MARQUEES + THROTTLED SCROLL ---
+  // The marquees animate in CSS, which keeps them on the compositor and avoids
+  // reading scrollWidth and writing transforms on every animation frame.
+  let scrollFrame = 0;
+  const handleScroll = function () {
+    if (scrollFrame) return;
+    scrollFrame = requestAnimationFrame(function () {
+      updateScrollProgress();
+      updateNavbar();
+      updateProcessTimeline();
+      updateHorizontalScroll();
+      scrollFrame = 0;
+    });
   };
-  requestAnimationFrame(renderLoop);
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  recalculateHorizontalMetrics();
 
   // Initial calls
   updateScrollProgress();
