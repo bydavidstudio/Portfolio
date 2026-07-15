@@ -909,7 +909,7 @@ body.menu-open .menu-footer { opacity: 1; transform: translateY(0); }
 .footer-marq .marquee-item {
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--ink-muted);
+  color: #c0c8c3;
 }
 .marq-sep-red { color: var(--crimson); }
 .marq-sep-green { color: var(--emerald); }
@@ -1501,6 +1501,8 @@ section { padding: 110px 0; position: relative; }
 /* ================= FOOTER ================= */
 footer { padding: 0 0 48px 0; background: var(--bg-dark); color: #fff; }
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 28px; padding-top: 30px; }
+.footer-bottom .hover-line { color: #c0c8c3; }
+.footer-bottom .hover-line:hover { color: #ffffff; }
 .marq-sep-gold { color: var(--gold); }
 
 /* ================= REVEAL ANIMATIONS ================= */
@@ -1576,6 +1578,13 @@ footer { padding: 0 0 48px 0; background: var(--bg-dark); color: #fff; }
   .contact-card { border-radius: 24px; }
 
   .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+}
+
+/* On mobile the preloader was detected as the LCP element. Let the real hero
+   content paint immediately instead of covering it with a loading screen. */
+@media (max-width: 768px) {
+  .premium-preloader { display: none; }
+  body.loading { overflow-x: clip; overflow-y: auto; }
 }
 
 @media (max-width: 480px) {

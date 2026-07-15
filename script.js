@@ -15,21 +15,30 @@ document.addEventListener('DOMContentLoaded', function () {
   const progressBar = document.querySelector('.preloader-bar');
   let perc = 0;
 
+  // The full-screen preloader is attractive on desktop, but it becomes the
+  // mobile LCP element. Skip it on touch/small screens so real content paints
+  // immediately and the page remains scrollable while assets load.
+  const skipPreloader = isTouch || window.matchMedia('(max-width: 768px)').matches;
   document.body.classList.add('loading');
 
-  const loaderInterval = setInterval(function () {
-    perc += Math.floor(Math.random() * 14) + 8;
-    if (perc >= 100) {
-      perc = 100;
-      clearInterval(loaderInterval);
-      setTimeout(function () {
-        if (preloader) preloader.classList.add('done');
-        document.body.classList.remove('loading');
-      }, 350);
-    }
-    if (progressVal) progressVal.textContent = (perc < 10 ? '0' : '') + perc + '%';
-    if (progressBar) progressBar.style.width = perc + '%';
-  }, 75);
+  if (skipPreloader) {
+    if (preloader) preloader.classList.add('done');
+    document.body.classList.remove('loading');
+  } else {
+    const loaderInterval = setInterval(function () {
+      perc += Math.floor(Math.random() * 14) + 8;
+      if (perc >= 100) {
+        perc = 100;
+        clearInterval(loaderInterval);
+        setTimeout(function () {
+          if (preloader) preloader.classList.add('done');
+          document.body.classList.remove('loading');
+        }, 350);
+      }
+      if (progressVal) progressVal.textContent = (perc < 10 ? '0' : '') + perc + '%';
+      if (progressBar) progressBar.style.width = perc + '%';
+    }, 75);
+  }
 
   // --- 2. TOP SCROLL PROGRESS BAR ---
   const scrollBar = document.querySelector('.scroll-progress-bar');
@@ -122,7 +131,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- 5.5 FULL-SCREEN INTERACTIVE WAVE MESH BACKGROUND ---
   const bgCanvas = document.getElementById('bgInteractiveCanvas');
-  if (bgCanvas) {
+  // The interactive mesh is decorative and expensive on mobile. Skip it on
+  // touch devices so it cannot compete with the hero for CPU/GPU time.
+  if (bgCanvas && !isTouch) {
     const ctx = bgCanvas.getContext('2d');
 
     bgCanvas.style.touchAction = 'none';
@@ -456,12 +467,14 @@ document.addEventListener('DOMContentLoaded', function () {
     menuBtn.addEventListener('click', function () {
       const isOpen = document.body.classList.toggle('menu-open');
       document.body.classList.toggle('no-scroll');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
       if (isOpen) triggerPaintDripping();
     });
   }
   document.querySelectorAll('.mega-link').forEach(function (link) {
     link.addEventListener('click', function () {
       document.body.classList.remove('menu-open', 'no-scroll');
+      if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
     });
   });
 
