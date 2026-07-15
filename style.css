@@ -1657,26 +1657,78 @@ footer { padding: 0 0 48px 0; background: var(--bg-dark); color: #fff; }
   }
 }
 
-/* Lightweight mobile background: static, warm and branded. The desktop
-   canvas/aurora effect is intentionally replaced on touch screens so the
-   background never competes with scrolling or the hero content. */
+/* Lightweight mobile aurora: it keeps the desktop atmosphere without the
+   canvas or heavy blur filters. Only transform/opacity are animated, so the
+   effect stays friendly to low-power phones. */
 @media (max-width: 768px), (pointer: coarse) {
   .tech-bg {
     background-color: var(--bg-main);
     background-image:
-      radial-gradient(90% 38% at -8% 0%, rgba(220, 56, 38, 0.13), transparent 72%),
-      radial-gradient(85% 42% at 108% 52%, rgba(15, 108, 79, 0.11), transparent 72%),
-      radial-gradient(75% 35% at 50% 100%, rgba(217, 150, 50, 0.10), transparent 72%),
-      radial-gradient(circle, rgba(20, 24, 21, 0.055) 1px, transparent 1.2px);
-    background-size: auto, auto, auto, 24px 24px;
-    background-position: center, center, center, 0 0;
+      radial-gradient(circle, rgba(20, 24, 21, 0.055) 1px, transparent 1.2px),
+      linear-gradient(145deg, #f8f6f0 0%, #f5f4ef 48%, #f0f3ed 100%);
+    background-size: 24px 24px, 100% 100%;
+    background-position: 0 0, center;
   }
 
   .tech-bg .bg-interactive-canvas,
-  .tech-bg .grid-layer,
-  .tech-bg .aurora-blob {
+  .tech-bg .grid-layer {
     display: none;
   }
+
+  .tech-bg .aurora-blob {
+    display: block;
+    filter: none;
+    opacity: 0.82;
+    pointer-events: none;
+    will-change: transform;
+    contain: paint;
+  }
+
+  .tech-bg .a-red {
+    width: 72vw;
+    height: 72vw;
+    top: -17%;
+    left: -27%;
+    background: radial-gradient(circle, rgba(220, 56, 38, 0.22) 0%, rgba(220, 56, 38, 0.08) 48%, transparent 72%);
+    animation: mobileAuroraRed 18s ease-in-out infinite alternate;
+  }
+
+  .tech-bg .a-green {
+    width: 78vw;
+    height: 78vw;
+    right: -32%;
+    bottom: 18%;
+    background: radial-gradient(circle, rgba(15, 108, 79, 0.20) 0%, rgba(15, 108, 79, 0.07) 48%, transparent 72%);
+    animation: mobileAuroraGreen 22s ease-in-out infinite alternate;
+  }
+
+  .tech-bg .a-gold {
+    width: 62vw;
+    height: 62vw;
+    top: 38%;
+    left: 24%;
+    background: radial-gradient(circle, rgba(217, 150, 50, 0.16) 0%, rgba(217, 150, 50, 0.05) 48%, transparent 72%);
+    animation: mobileAuroraGold 25s ease-in-out infinite alternate;
+  }
+
+  @keyframes mobileAuroraRed {
+    from { transform: translate3d(-2vw, 0, 0) scale(0.94); }
+    to { transform: translate3d(14vw, 11vh, 0) scale(1.06); }
+  }
+
+  @keyframes mobileAuroraGreen {
+    from { transform: translate3d(0, 2vh, 0) scale(0.96); }
+    to { transform: translate3d(-12vw, -8vh, 0) scale(1.04); }
+  }
+
+  @keyframes mobileAuroraGold {
+    from { transform: translate3d(-5vw, 0, 0) scale(0.92); }
+    to { transform: translate3d(8vw, -7vh, 0) scale(1.08); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-bg .aurora-blob { animation: none; }
 }
 
 /* On mobile the preloader was detected as the LCP element. Let the real hero
