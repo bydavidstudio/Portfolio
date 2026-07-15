@@ -16,7 +16,8 @@
   /* Text & Ink */
   --ink-main: #141815;
   --ink-body: #3c443e;
-  --ink-muted: #727a75;
+  /* Darker muted text improves WCAG contrast on the ivory background */
+  --ink-muted: #626b65;
   --ink-light: #ffffff;
 
   /* Multi-Color Vibrant Accents */
@@ -830,6 +831,11 @@ body.menu-open .menu-footer { opacity: 1; transform: translateY(0); }
 .mockup-header-dots span:nth-child(2) { width: 10px; height: 10px; border-radius: 50%; background: #fbbf24; }
 .mockup-header-dots span:nth-child(3) { width: 10px; height: 10px; border-radius: 50%; background: #34d399; }
 
+.showcase-main-card picture,
+.proj-preview picture {
+  display: block;
+}
+
 .showcase-main-card img,
 .showcase-main-card video {
   width: 100%;
@@ -1381,7 +1387,7 @@ section { padding: 110px 0; position: relative; }
 }
 .nf-field input::placeholder,
 .nf-field textarea::placeholder {
-  color: #555a58;
+  color: #7a8380;
   font-weight: 400;
 }
 .nf-field input:focus,
