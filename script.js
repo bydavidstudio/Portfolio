@@ -547,7 +547,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- 11. COMPOSITOR-BASED MARQUEES + THROTTLED SCROLL ---
+  // --- 11. LIGHTWEIGHT MOBILE SECTION PARALLAX ---
+  // Only two decorative pseudo-layers move by a small amount. No canvas,
+  // blur filter or per-frame layout animation is used.
+  const mobileParallaxEnabled = isTouch || window.matchMedia('(max-width: 768px)').matches;
+  const parallaxTargets = mobileParallaxEnabled
+    ? [document.querySelector('.hero-section'), document.querySelector('.portfolio-scroll-wrapper')]
+    : [];
+
+  const updateMobileParallax = function () {
+    if (!mobileParallaxEnabled) return;
+    const viewportCenter = window.innerHeight / 2;
+
+    parallaxTargets.forEach(function (section) {
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      if (rect.bottom < -200 || rect.top > window.innerHeight + 200) return;
+
+      const sectionCenter = rect.top + rect.height / 2;
+      const distanceFromCenter = sectionCenter - viewportCenter;
+      const shift = Math.max(-34, Math.min(34, distanceFromCenter * -0.06));
+      section.style.setProperty('--parallax-y', shift.toFixed(1) + 'px');
+    });
+  };
+
+  // --- 12. COMPOSITOR-BASED MARQUEES + THROTTLED SCROLL ---
   // The marquees animate in CSS, which keeps them on the compositor and avoids
   // reading scrollWidth and writing transforms on every animation frame.
   let scrollFrame = 0;
@@ -558,6 +582,7 @@ document.addEventListener('DOMContentLoaded', function () {
       updateNavbar();
       updateProcessTimeline();
       updateHorizontalScroll();
+      updateMobileParallax();
       scrollFrame = 0;
     });
   };
@@ -570,8 +595,9 @@ document.addEventListener('DOMContentLoaded', function () {
   updateNavbar();
   updateProcessTimeline();
   updateHorizontalScroll();
+  updateMobileParallax();
 
-  // --- 12. FAQ ACCORDION ---
+  // --- 13. FAQ ACCORDION ---
   document.querySelectorAll('.accordion-item').forEach(function (item) {
     const head = item.querySelector('.accordion-head');
     const body = item.querySelector('.accordion-body');

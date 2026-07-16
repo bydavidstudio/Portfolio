@@ -1731,6 +1731,196 @@ footer { padding: 0 0 48px 0; background: var(--bg-dark); color: #fff; }
   .tech-bg .aurora-blob { animation: none; }
 }
 
+/* Section-specific mobile backgrounds. They are static gradients rather than
+   animated filters, so each section still has visual depth without scroll lag. */
+@media (max-width: 768px), (pointer: coarse) {
+  .tech-bg .aurora-blob {
+    display: none;
+  }
+
+  .hero-section {
+    background:
+      radial-gradient(65% 42% at -8% 0%, rgba(220, 56, 38, 0.13), transparent 74%),
+      radial-gradient(62% 44% at 108% 62%, rgba(15, 108, 79, 0.11), transparent 74%),
+      radial-gradient(50% 38% at 58% 28%, rgba(217, 150, 50, 0.09), transparent 74%),
+      #f5f4ef;
+  }
+
+  .forest-section {
+    background:
+      radial-gradient(70% 55% at 100% 0%, rgba(15, 108, 79, 0.13), transparent 72%),
+      radial-gradient(60% 42% at 0% 100%, rgba(217, 150, 50, 0.10), transparent 72%),
+      #f1ede3;
+  }
+
+  .crimson-section {
+    background:
+      radial-gradient(72% 52% at 100% 0%, rgba(220, 56, 38, 0.20), transparent 72%),
+      radial-gradient(68% 48% at 0% 100%, rgba(15, 108, 79, 0.14), transparent 72%),
+      #111316;
+  }
+
+  .portfolio-scroll-wrapper {
+    background:
+      radial-gradient(70% 48% at 0% 8%, rgba(220, 56, 38, 0.10), transparent 72%),
+      radial-gradient(68% 50% at 100% 88%, rgba(15, 108, 79, 0.10), transparent 72%),
+      radial-gradient(58% 40% at 52% 45%, rgba(217, 150, 50, 0.09), transparent 72%),
+      #f5f4ef;
+  }
+
+  .dark-section,
+  footer {
+    background:
+      radial-gradient(74% 46% at 100% 0%, rgba(217, 150, 50, 0.10), transparent 72%),
+      radial-gradient(70% 48% at 0% 100%, rgba(15, 108, 79, 0.10), transparent 72%),
+      #141312;
+  }
+}
+
+/* Mobile dark aurora variant with a very small parallax movement. This gives
+   Hero and Portfolio a clear visual identity instead of white-on-white. */
+@media (max-width: 768px), (pointer: coarse) {
+  .hero-section,
+  .portfolio-scroll-wrapper {
+    color: #f8faf9;
+    background-color: #101716;
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.075) 1px, transparent 1.2px),
+      linear-gradient(145deg, #0d1514 0%, #141817 50%, #17120f 100%);
+    background-size: 24px 24px, 100% 100%;
+    background-position: 0 0, center;
+  }
+
+  .hero-section .hero-title,
+  .portfolio-scroll-wrapper .sec-title,
+  .portfolio-scroll-wrapper .outro-panel .sec-title {
+    color: #f8faf9;
+  }
+
+  .hero-section .hero-desc,
+  .portfolio-scroll-wrapper .sec-sub {
+    color: #c4ceca;
+  }
+
+  .hero-section .hero-desc strong {
+    color: #ffffff !important;
+  }
+
+  .hero-section .hero-live-pill {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .hero-section .hero-live-pill .mono-text {
+    color: #f8faf9 !important;
+  }
+
+  .portfolio-scroll-wrapper .sec-kicker-label {
+    color: #aab8b2;
+  }
+
+  .portfolio-scroll-wrapper .circle-cta {
+    background: var(--crimson);
+    color: #ffffff;
+    box-shadow: 0 12px 32px rgba(220, 56, 38, 0.30);
+  }
+
+  .hero-section::before,
+  .hero-section::after,
+  .portfolio-scroll-wrapper::before,
+  .portfolio-scroll-wrapper::after {
+    will-change: transform;
+    transform: translate3d(0, var(--parallax-y, 0px), 0);
+  }
+
+  .hero-section::before {
+    background: radial-gradient(circle at 42% 44%, rgba(220, 56, 38, 0.52) 0%, rgba(220, 56, 38, 0.18) 43%, transparent 73%);
+  }
+
+  .hero-section::after {
+    background: radial-gradient(circle at 58% 42%, rgba(15, 108, 79, 0.44) 0%, rgba(217, 150, 50, 0.18) 45%, transparent 73%);
+  }
+
+  .portfolio-scroll-wrapper::before {
+    background: radial-gradient(circle at 55% 48%, rgba(217, 150, 50, 0.48) 0%, rgba(220, 56, 38, 0.18) 46%, transparent 74%);
+  }
+
+  .portfolio-scroll-wrapper::after {
+    background: radial-gradient(circle at 45% 45%, rgba(15, 108, 79, 0.48) 0%, rgba(15, 108, 79, 0.16) 46%, transparent 74%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-section::before,
+  .hero-section::after,
+  .portfolio-scroll-wrapper::before,
+  .portfolio-scroll-wrapper::after {
+    transform: none;
+  }
+}
+
+/* More visible section accents: these are static, soft shapes so the mobile
+   version feels designed rather than empty, without adding animation work. */
+@media (max-width: 768px), (pointer: coarse) {
+  .hero-section,
+  .portfolio-scroll-wrapper {
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .hero-section::before,
+  .hero-section::after,
+  .portfolio-scroll-wrapper::before,
+  .portfolio-scroll-wrapper::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-section::before {
+    width: 520px;
+    height: 520px;
+    top: -220px;
+    right: -210px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 42% 44%, rgba(220, 56, 38, 0.52) 0%, rgba(220, 56, 38, 0.18) 43%, transparent 73%);
+  }
+
+  .hero-section::after {
+    width: 440px;
+    height: 440px;
+    left: -190px;
+    bottom: -210px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 58% 42%, rgba(15, 108, 79, 0.44) 0%, rgba(217, 150, 50, 0.18) 45%, transparent 73%);
+  }
+
+  .portfolio-scroll-wrapper::before {
+    width: 500px;
+    height: 500px;
+    top: -210px;
+    left: -210px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 55% 48%, rgba(217, 150, 50, 0.48) 0%, rgba(220, 56, 38, 0.18) 46%, transparent 74%);
+  }
+
+  .portfolio-scroll-wrapper::after {
+    width: 520px;
+    height: 520px;
+    right: -230px;
+    bottom: -190px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 45% 45%, rgba(15, 108, 79, 0.48) 0%, rgba(15, 108, 79, 0.16) 46%, transparent 74%);
+  }
+
+  .hero-section > .container,
+  .portfolio-scroll-wrapper > .portfolio-sticky-box {
+    position: relative;
+    z-index: 1;
+  }
+}
+
 /* On mobile the preloader was detected as the LCP element. Let the real hero
    content paint immediately instead of covering it with a loading screen. */
 @media (max-width: 768px), (pointer: coarse) {
@@ -1749,4 +1939,236 @@ footer { padding: 0 0 48px 0; background: var(--bg-dark); color: #fff; }
 @media (max-width: 480px) {
   .burger-text { display: none; } /* Hide MENU text on tiny phones for extra cleanness */
   .mobile-toggle { padding: 8px 12px; }
+}
+
+/* Final mobile palette: a warm muted canvas for white portfolio cards and a
+   rich emerald/wine hero, instead of white-on-white or pure black. */
+@media (max-width: 768px), (pointer: coarse) {
+  .hero-section {
+    background:
+      radial-gradient(78% 56% at 100% 0%, rgba(220, 56, 38, 0.34), transparent 72%),
+      radial-gradient(72% 54% at 0% 100%, rgba(15, 108, 79, 0.30), transparent 72%),
+      radial-gradient(58% 45% at 55% 42%, rgba(217, 150, 50, 0.16), transparent 74%),
+      linear-gradient(135deg, #173a35 0%, #3a2929 52%, #493728 100%);
+  }
+
+  .portfolio-scroll-wrapper {
+    color: var(--ink-main);
+    background:
+      radial-gradient(76% 58% at 0% 0%, rgba(220, 56, 38, 0.14), transparent 72%),
+      radial-gradient(72% 56% at 100% 100%, rgba(15, 108, 79, 0.16), transparent 72%),
+      radial-gradient(60% 45% at 50% 42%, rgba(217, 150, 50, 0.12), transparent 74%),
+      linear-gradient(135deg, #c9c8bb 0%, #d8d2c6 48%, #c5d0c8 100%);
+  }
+
+  .portfolio-scroll-wrapper .sec-title,
+  .portfolio-scroll-wrapper .outro-panel .sec-title {
+    color: var(--ink-main);
+  }
+
+  .portfolio-scroll-wrapper .sec-sub {
+    color: #4d5953;
+  }
+
+  .portfolio-scroll-wrapper .sec-kicker-label {
+    color: #52635b;
+  }
+
+  .portfolio-scroll-wrapper::before {
+    background: radial-gradient(circle at 55% 48%, rgba(217, 150, 50, 0.22) 0%, rgba(220, 56, 38, 0.08) 46%, transparent 74%);
+  }
+
+  .portfolio-scroll-wrapper::after {
+    background: radial-gradient(circle at 45% 45%, rgba(15, 108, 79, 0.24) 0%, rgba(15, 108, 79, 0.08) 46%, transparent 74%);
+  }
+
+  .hero-section::before {
+    background: radial-gradient(circle at 42% 44%, rgba(220, 56, 38, 0.40) 0%, rgba(220, 56, 38, 0.14) 43%, transparent 73%);
+  }
+
+  .hero-section::after {
+    background: radial-gradient(circle at 58% 42%, rgba(15, 108, 79, 0.32) 0%, rgba(217, 150, 50, 0.14) 45%, transparent 73%);
+  }
+}
+
+/* Continue the mobile Hero atmosphere through the first service marquee. */
+@media (max-width: 768px), (pointer: coarse) {
+  .hero-section {
+    padding-bottom: 34px;
+  }
+
+  .hero-section + .marquee-wrapper {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    margin: 0;
+    padding: 34px 0 72px;
+    background:
+      radial-gradient(72% 150% at 0% 50%, rgba(220, 56, 38, 0.24), transparent 70%),
+      radial-gradient(72% 150% at 100% 50%, rgba(15, 108, 79, 0.22), transparent 70%),
+      linear-gradient(135deg, #173a35 0%, #3a2929 54%, #493728 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  }
+
+  .hero-section + .marquee-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217, 150, 50, 0.15), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-section + .marquee-wrapper .marquee-track {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-section + .marquee-wrapper .marquee-item {
+    color: #f8faf9;
+  }
+
+  .hero-section + .marquee-wrapper .marq-sep-red {
+    color: #ff8b78;
+  }
+
+  .hero-section + .marquee-wrapper .marq-sep-green {
+    color: #71d5ad;
+  }
+}
+
+/* Lighter mobile Hero + a distinct translucent strip for the first marquee. */
+@media (max-width: 768px), (pointer: coarse) {
+  .hero-section {
+    background:
+      radial-gradient(72% 54% at -6% 0%, rgba(220, 56, 38, 0.20), transparent 73%),
+      radial-gradient(70% 54% at 106% 76%, rgba(15, 108, 79, 0.18), transparent 73%),
+      radial-gradient(58% 44% at 58% 8%, rgba(217, 150, 50, 0.16), transparent 74%),
+      linear-gradient(135deg, #e6ddd1 0%, #f0ede5 48%, #dce8df 100%);
+  }
+
+  .hero-section .hero-title {
+    color: var(--ink-main);
+  }
+
+  .hero-section .hero-desc {
+    color: var(--ink-body);
+  }
+
+  .hero-section .hero-desc strong {
+    color: var(--ink-main) !important;
+  }
+
+  .hero-section .hero-live-pill {
+    background: rgba(255, 255, 255, 0.78);
+    border-color: rgba(20, 24, 21, 0.14);
+  }
+
+  .hero-section .hero-live-pill .mono-text {
+    color: var(--ink-main) !important;
+  }
+
+  .hero-section::before {
+    background: radial-gradient(circle at 42% 44%, rgba(220, 56, 38, 0.25) 0%, rgba(220, 56, 38, 0.08) 44%, transparent 73%);
+  }
+
+  .hero-section::after {
+    background: radial-gradient(circle at 58% 42%, rgba(15, 108, 79, 0.24) 0%, rgba(217, 150, 50, 0.10) 45%, transparent 73%);
+  }
+
+  .hero-section + .marquee-wrapper {
+    padding: 32px 0 42px;
+    background: rgba(248, 245, 238, 0.86);
+    border-top: 1px solid rgba(20, 24, 21, 0.12);
+    border-bottom: 1px solid rgba(20, 24, 21, 0.12);
+    box-shadow: 0 14px 30px rgba(20, 24, 21, 0.10);
+  }
+
+  .hero-section + .marquee-wrapper::before {
+    background:
+      radial-gradient(60% 140% at 0% 50%, rgba(220, 56, 38, 0.16), transparent 72%),
+      radial-gradient(60% 140% at 100% 50%, rgba(15, 108, 79, 0.15), transparent 72%),
+      radial-gradient(circle at 50% 50%, rgba(217, 150, 50, 0.12), transparent 70%);
+  }
+
+  .hero-section + .marquee-wrapper .marquee-item {
+    color: var(--ink-main);
+  }
+
+  .hero-section + .marquee-wrapper .marq-sep-red {
+    color: var(--crimson);
+  }
+
+  .hero-section + .marquee-wrapper .marq-sep-green {
+    color: var(--emerald);
+  }
+}
+
+/* Refined mobile direction: soft sage, warm cream and a restrained glass strip. */
+@media (max-width: 768px), (pointer: coarse) {
+  .hero-section {
+    background:
+      radial-gradient(72% 56% at 104% 0%, rgba(15, 108, 79, 0.24), transparent 73%),
+      radial-gradient(68% 52% at -4% 78%, rgba(217, 150, 50, 0.14), transparent 73%),
+      radial-gradient(48% 40% at 70% 54%, rgba(220, 56, 38, 0.10), transparent 74%),
+      linear-gradient(135deg, #c7d8cf 0%, #e9e7dd 48%, #b9d0c5 100%);
+  }
+
+  .hero-section .hero-title {
+    color: #172820;
+  }
+
+  .hero-section .hero-desc {
+    color: #3f5048;
+  }
+
+  .hero-section .hero-live-pill {
+    background: rgba(249, 250, 245, 0.72);
+    border-color: rgba(15, 108, 79, 0.18);
+    box-shadow: 0 8px 24px rgba(15, 108, 79, 0.08);
+  }
+
+  .hero-section .hero-live-pill .mono-text {
+    color: #173a2f !important;
+  }
+
+  .hero-section::before {
+    background: radial-gradient(circle at 42% 44%, rgba(15, 108, 79, 0.24) 0%, rgba(15, 108, 79, 0.08) 45%, transparent 74%);
+  }
+
+  .hero-section::after {
+    background: radial-gradient(circle at 58% 42%, rgba(217, 150, 50, 0.20) 0%, rgba(220, 56, 38, 0.08) 46%, transparent 74%);
+  }
+
+  .hero-section + .marquee-wrapper {
+    background: linear-gradient(180deg, rgba(248, 250, 245, 0.90), rgba(224, 236, 229, 0.82));
+    border-top: 1px solid rgba(15, 108, 79, 0.18);
+    border-bottom: 1px solid rgba(15, 108, 79, 0.16);
+    box-shadow: 0 14px 30px rgba(15, 108, 79, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  }
+
+  .hero-section + .marquee-wrapper::before {
+    background:
+      radial-gradient(60% 140% at 0% 50%, rgba(15, 108, 79, 0.13), transparent 72%),
+      radial-gradient(60% 140% at 100% 50%, rgba(217, 150, 50, 0.12), transparent 72%),
+      radial-gradient(circle at 50% 50%, rgba(220, 56, 38, 0.07), transparent 70%);
+  }
+
+  .hero-section + .marquee-wrapper .marquee-item {
+    color: #173a2f;
+  }
+
+  .hero-section + .marquee-wrapper .marq-sep-red {
+    color: #c8382b;
+  }
+
+  .hero-section + .marquee-wrapper .marq-sep-green {
+    color: #0f6c4f;
+  }
 }
